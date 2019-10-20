@@ -32,6 +32,7 @@ namespace TP_Laba1
             Close();
         }
         int A = -100, B = 100;
+        ArrayList myAL;
         private void Gen(ArrayList myAL,int itemCount, int x,int y)
         {
             Random rnd1 = new Random();
@@ -221,7 +222,7 @@ namespace TP_Laba1
                 window2.ShowDialog();
                 int K;
                 K = Convert.ToInt32(window2.tb_K.Text);
-                ArrayList myAL = new ArrayList();
+                myAL = new ArrayList();
                 int itemCount = Convert.ToInt32(tBox_countElem.Text);
                 if (K > itemCount)
                 {
@@ -249,6 +250,66 @@ namespace TP_Laba1
             catch
             {
                 error();
+            }
+        }
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (myAL != null)
+            {
+                int sum = 0, mo = 0, index;
+                bool p = false;
+                for (index = 0; index < myAL.Count; index++)
+                {
+                    sum += (int)myAL[index];
+                }
+                mo = sum / myAL.Count;
+                index = 0;
+                while (p == false)
+                {
+                    if ((int)myAL[index] > mo)
+                        p = true;
+                    index++;
+                }
+                MessageBox.Show(index + " = первый элемент больший математического ожидания " + mo);
+            }
+            else MessageBox.Show("Массив не сформирован");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (myAL != null)
+            {
+                Form1 form1 = new Form1(myAL);
+                form1.Show();
+            }
+            else MessageBox.Show("Массив не сформирован");
+        }
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+            {
+                try
+                {
+                    myAL = new ArrayList();
+                    int itemCount = Convert.ToInt32(tBox_countElem.Text);
+                    Gen(myAL, itemCount, A, B);
+                    int m = 0;
+                    myAL.Add(myAL[0]);
+                    //lbMain.Items.Add(myAL[0]);
+                    myAL.Add(myAL[1]);
+                    //lbMain.Items.Add(myAL[1]);
+                    for (int index = 1; index < itemCount; index++)
+                    {
+                        if (((int)myAL[index - 1] < (int)myAL[index]) && ((int)myAL[index] > (int)myAL[index + 1]))
+                            m++;
+                    }
+                    tBox_countElem.BorderBrush = Brushes.Gray;
+                    MessageBox.Show("Колличество элементов массива больше своих «соседей» = " + Convert.ToString(m), "Результат");
+                }
+                catch
+                {
+                    error();
+                }
+
+
             }
         }
         }
