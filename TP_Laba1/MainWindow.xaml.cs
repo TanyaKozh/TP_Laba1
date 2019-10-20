@@ -284,6 +284,12 @@ namespace TP_Laba1
             }
             else MessageBox.Show("Массив не сформирован");
         }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void MenuItem_Click(object sender, RoutedEventArgs e)
             {
                 try
