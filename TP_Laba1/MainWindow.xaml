@@ -43,10 +43,8 @@
                 <MenuItem Header="Гистограмма" Click="Button_Click"/>
                 <MenuItem Header="Соседи" Click="MenuItem_Click"/>
                 <MenuItem Header="Последовательность" Click="MenuItem_Click_2"/>
-            </MenuItem>
-            <MenuItem Header="New2">
-                <MenuItem Header="Математическое ожидание" Click="MenuItem_Click_1"/>
-                
+
+
             </MenuItem>
         </Menu>
 

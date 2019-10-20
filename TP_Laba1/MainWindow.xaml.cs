@@ -252,28 +252,7 @@ namespace TP_Laba1
                 error();
             }
         }
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            if (myAL != null)
-            {
-                int sum = 0, mo = 0, index;
-                bool p = false;
-                for (index = 0; index < myAL.Count; index++)
-                {
-                    sum += (int)myAL[index];
-                }
-                mo = sum / myAL.Count;
-                index = 0;
-                while (p == false)
-                {
-                    if ((int)myAL[index] > mo)
-                        p = true;
-                    index++;
-                }
-                MessageBox.Show(index + " = первый элемент больший математического ожидания " + mo);
-            }
-            else MessageBox.Show("Массив не сформирован");
-        }
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
