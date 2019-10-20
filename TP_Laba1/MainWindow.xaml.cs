@@ -252,6 +252,22 @@ namespace TP_Laba1
                 error();
             }
         }
+        
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (myAL != null)
+            {
+                Form1 form1 = new Form1(myAL);
+                form1.Show();
+            }
+            else MessageBox.Show("Массив не сформирован");
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -310,8 +326,7 @@ namespace TP_Laba1
                 Form1 form1 = new Form1(myAL);
                 form1.Show();
             }
-            else MessageBox.Show("Массив не сформирован");
-        }      
+        }
+        }
     }
-}
 
