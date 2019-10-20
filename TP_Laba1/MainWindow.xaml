@@ -45,8 +45,6 @@
                 <MenuItem Header="Соседи" Click="MenuItem_Click"/>
                 <MenuItem Header="Математическое ожидание" Click="MenuItem_Click_1"/>
             </MenuItem>
-
-
         </Menu>
 
 
