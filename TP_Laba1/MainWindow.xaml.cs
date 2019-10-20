@@ -32,7 +32,7 @@ namespace TP_Laba1
         {
             Close();
         }
-        int A = -100, B = 100;
+        int A = -10, B = 10;
         private void Gen(ArrayList myAL, int itemCount, int x, int y)
         {
             Random rnd1 = new Random();
