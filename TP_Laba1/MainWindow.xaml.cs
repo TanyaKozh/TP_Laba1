@@ -317,24 +317,18 @@ namespace TP_Laba1
                 math();
                 mean();
                 MessageBox.Show("Мат. ожидание = " + mo);
-                MessageBox.Show("Среднее отклонение = " + sr);
+                //MessageBox.Show("Среднее отклонение = " + sr);
                 lbMain.Items.Clear();
                 lbMain.Items.Add("Исходный массив");
-                if (mo > sr / 2)
+                for (int index = 0; index < myAL.Count; index++)
                 {
-                    for (int index = 0; index < myAL.Count; index++)
-                    {
-                        lbMain.Items.Add(sr);
-                    }
+                   double srd = Math.Pow((int)myAL[index] - sr, 2);
+                   if (mo > srd / 2)
+                   lbMain.Items.Add(sr);                   
+                   else
+                   lbMain.Items.Add(myAL[index]);
                 }
-                else
-                {
-                    for (int index = 0; index < myAL.Count; index++)
-                    {
-
-                        lbMain.Items.Add(myAL[index]);
-                    }
-                }
+                MessageBox.Show("Замена произведена");
             }
             else MessageBox.Show("Массив не сформирован");
         }
