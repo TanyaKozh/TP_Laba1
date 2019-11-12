@@ -32,8 +32,8 @@ namespace TP_Laba1
         {
             Close();
         }
-        int A = -10, B = 10,mo;
-        double sr;
+        int A = -10, B = 10;
+        double sr, mo;
         private void Gen(ArrayList myAL, int itemCount, int x, int y)
         {
             Random rnd1 = new Random();
@@ -253,7 +253,7 @@ namespace TP_Laba1
                 error();
             }
         }
-        
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -280,78 +280,121 @@ namespace TP_Laba1
                 for (int index = 1; index < itemCount; index++)
                 {
                     if (((int)myAL[index - 1] < (int)myAL[index]) && ((int)myAL[index] > (int)myAL[index + 1]))
-                        m++;                   
+                        m++;
                 }
                 tBox_countElem.BorderBrush = Brushes.Gray;
                 MessageBox.Show("Колличество элементов массива больше своих «соседей» = " + Convert.ToString(m), "Результат");
             }
-            catch {
+            catch
+            {
                 error();
             }
-           
+
 
         }
 
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)                 //задание №6 про отклонение элементов массива от мат.ожидания - работает
         {
             if (myAL != null)
             {
                 math();
-                MessageBox.Show("Мат. ожидание = "+mo);
-                lbMain.Items.Clear();
-                lbMain.Items.Add("Исходный массив");
+                lbMain.Items.Add("Мат. ожидание = " + mo);
+                lbMain.Items.Add("Измененный массив");
                 for (int index = 0; index < myAL.Count; index++)
                 {
-                    string st = Convert.ToString((int)myAL[index]-mo);
-                    //MessageBox.Show(st);
-                    lbMain.Items.Add(Convert.ToString(myAL[index]) + " -> "+ st);
+                    lbMain.Items.Add((int)myAL[index] - mo);
                 }
             }
             else MessageBox.Show("Массив не сформирован");
         }
 
-        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)                    //задание №7 про замену - работает
         {
             if (myAL != null)
             {
                 math();
-                mean();
-                MessageBox.Show("Мат. ожидание = " + mo);
-                //MessageBox.Show("Среднее отклонение = " + sr);
-                lbMain.Items.Clear();
-                lbMain.Items.Add("Исходный массив");
+                max();
+                lbMain.Items.Add("Мат. ожидание = " + mo);
+                lbMain.Items.Add("Максимальное отклонение = " + sr);
+                lbMain.Items.Add("Измененный массив");
                 for (int index = 0; index < myAL.Count; index++)
                 {
-                   double srd = Math.Pow((int)myAL[index] - sr, 2);
-                   if (mo > srd / 2)
-                   lbMain.Items.Add(sr);                   
-                   else
-                   lbMain.Items.Add(myAL[index]);
+                    double k = (int)myAL[index] - mo;
+                    if (k > sr / 2)
+                        lbMain.Items.Add((int)myAL[index] + "->" + mo);
+                    else
+                        lbMain.Items.Add(myAL[index]);
                 }
                 MessageBox.Show("Замена произведена");
             }
             else MessageBox.Show("Массив не сформирован");
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)                 //задание №3 про математическое ожидание - работает
         {
             if (myAL != null)
-            {             
+            {
                 bool p = false;
                 math();
                 int index = 0;
                 while (p == false)
                 {
-                    if ((int)myAL[index]>mo)
+                    if ((int)myAL[index] > mo)
                         p = true;
                     index++;
                 }
-                MessageBox.Show(index+" = первый элемент больший математического ожидания "+mo);
+                MessageBox.Show(index + " = первый элемент больший математического ожидания " + mo);
             }
             else MessageBox.Show("Массив не сформирован");
         }
 
-        void math()
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)                 //задание №8 о нормализации массива
+        {
+            if (myAL != null)
+            {
+                math();
+                lbMain.Items.Add("Мат. ожидание = " + mo);
+                max();
+                lbMain.Items.Add("Максимальное отклонение = " + sr);
+                lbMain.Items.Add("Измененный массив");
+                for (int index = 0; index < myAL.Count; index++)
+                {
+                    double k = (int)myAL[index] - mo;
+
+                    if (k > sr / 2)
+                        lbMain.Items.Add((int)myAL[index] + "->" + ((int)myAL[index] - (k - sr / 2)));
+                    else
+                        lbMain.Items.Add(myAL[index]);
+                }
+                MessageBox.Show("Замена произведена");
+            }
+            else MessageBox.Show("Массив не сформирован");
+        }
+
+        private void MenuItem_Click_5(object sender, RoutedEventArgs e)                 //задание №9 о денормализации массива
+        {
+            if (myAL != null)
+            {
+                math();
+                lbMain.Items.Add("Мат. ожидание = " + mo);
+                max();
+                lbMain.Items.Add("Максимальное отклонение = " + sr);
+                lbMain.Items.Add("Измененный массив");
+                for (int index = 0; index < myAL.Count; index++)
+                {
+                    double k = (int)myAL[index] - mo;
+
+                    if (k > sr / 2)
+                        lbMain.Items.Add((int)myAL[index] + "->" + ((int)myAL[index] + (k - sr / 2)));
+                    else
+                        lbMain.Items.Add(myAL[index]);
+                }
+                MessageBox.Show("Замена произведена");
+            }
+            else MessageBox.Show("Массив не сформирован");
+        }
+
+        void math()                                                                     //вычисление математического ожидания(среднее)
         {
             int sum = 0, index;
             for (index = 0; index < myAL.Count; index++)
@@ -360,21 +403,16 @@ namespace TP_Laba1
             }
             mo = sum / myAL.Count;
         }
-        void mean()
+        void max()
         {
-            int sum = 0, index;
-            for (index = 0; index < myAL.Count; index++)
+            double max = Math.Abs((int)myAL[0] - mo);
+            for (int index = 1; index < myAL.Count; index++)
             {
-                sum += (int)myAL[index];
+                double n = Math.Abs((int)myAL[index] - mo);
+                if (n > max) max = n;
             }
-            sum = sum / myAL.Count;
-            for (index = 0; index < myAL.Count; index++)
-            {
-                sr += Math.Pow((int)myAL[index]-sum,2);
-            }
-            sr = Math.Sqrt(sr / myAL.Count);
+            sr = max;
         }
-        
-        }
-    }
 
+    }
+}
