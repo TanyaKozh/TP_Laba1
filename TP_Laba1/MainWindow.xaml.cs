@@ -394,8 +394,8 @@ namespace TP_Laba1
             else MessageBox.Show("Массив не сформирован");
         }
 
-        private void MenuItem_Click_6(object sender, RoutedEventArgs e)                    //задание №10 о многоитерационный алгоритм подавления шумов
-        {
+        private void MenuItem_Click_6(object sender, RoutedEventArgs e)     //ВРОДЕ работает  //задание №10 о многоитерационный алгоритм подавления шумов
+        {                                                                                  
             if (myAL != null)
             {
                 math();
@@ -405,8 +405,7 @@ namespace TP_Laba1
                 window3.ShowDialog();                
                 int k,n;
                 k = Convert.ToInt32(window3.textBox1.Text);
-                while (k!=0) {
-                    //MessageBox.Show(Convert.ToString(lbMain.Items.Count));
+                while (k!=0) {                  
                     Window4 window4 = new Window4();
                     window4.ShowDialog();
                     n = Convert.ToInt32(window4.textBox1.Text);
