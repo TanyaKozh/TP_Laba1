@@ -394,6 +394,38 @@ namespace TP_Laba1
             else MessageBox.Show("Массив не сформирован");
         }
 
+        private void MenuItem_Click_6(object sender, RoutedEventArgs e)                    //задание №10 о многоитерационный алгоритм подавления шумов
+        {
+            if (myAL != null)
+            {
+                math();
+                lbMain.Items.Add("Мат. ожидание = "+mo);
+                Window3 window3 = new Window3();
+                window3.Owner = this;
+                window3.ShowDialog();                
+                int k,n;
+                k = Convert.ToInt32(window3.textBox1.Text);
+                while (k!=0) {
+                    Window4 window4 = new Window4();
+                    window4.ShowDialog();
+                    n = Convert.ToInt32(window4.textBox1.Text);
+                    lbMain.Items.Add("величина границы отклонения = " + n);
+                    for (int index = 0; index < myAL.Count; index++)
+                    {
+                        int p = Math.Abs((int)myAL[index] - (int)mo);
+                        if ( p> n)
+                        {
+                            lbMain.Items.RemoveAt(index + 1);
+                            for (int j = index; j < myAL.Count; j++)
+                                myAL[j] = myAL[j++];
+                        }
+                    }
+                    k--;
+                }
+            }
+            else MessageBox.Show("Массив не сформирован");
+        }
+
         void math()                                                                     //вычисление математического ожидания(среднее)
         {
             int sum = 0, index;
