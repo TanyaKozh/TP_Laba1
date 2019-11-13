@@ -47,6 +47,22 @@ namespace TP_Laba1
                 lbMain.Items.Add(number);
             }
         }
+        private void Gen_new(ArrayList myAL, int itemCount, int x, int y)
+        {
+            Random rnd1 = new Random();
+            int number;
+            lbMain.Items.Clear();
+            lbMain.Items.Add("Сгенерированный массив");
+            int s = 0;
+            for (int index = 0; index < itemCount; index++)
+            {
+                number = Math.Abs(rnd1.Next(x, y));
+                myAL.Add(s+number);
+                lbMain.Items.Add(myAL[index]);
+                s =number+s;
+            }
+        }
+
         private void error()
         {
             tBox_countElem.BorderBrush = Brushes.Red;
@@ -308,25 +324,25 @@ namespace TP_Laba1
                 }
             }
             else MessageBox.Show("Массив не сформирован");
-        }
+        }                   
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
+
             if (myAL != null)
             {
                 math();
-                mean();
-                MessageBox.Show("Мат. ожидание = " + mo);
-                //MessageBox.Show("Среднее отклонение = " + sr);
-                lbMain.Items.Clear();
-                lbMain.Items.Add("Исходный массив");
+                max();
+                lbMain.Items.Add("Мат. ожидание = " + mo);
+                lbMain.Items.Add("Максимальное отклонение = " + sr);
+                lbMain.Items.Add("Измененный массив");
                 for (int index = 0; index < myAL.Count; index++)
                 {
-                   double srd = Math.Pow((int)myAL[index] - sr, 2);
-                   if (mo > srd / 2)
-                   lbMain.Items.Add(sr);                   
-                   else
-                   lbMain.Items.Add(myAL[index]);
+                    double k = (int)myAL[index] - mo;
+                    if (k > sr / 2)
+                        lbMain.Items.Add((int)myAL[index] + "->" + mo);
+                    else
+                        lbMain.Items.Add(myAL[index]);
                 }
                 MessageBox.Show("Замена произведена");
             }
@@ -351,6 +367,22 @@ namespace TP_Laba1
             else MessageBox.Show("Массив не сформирован");
         }
 
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)             //задание №16 о неубывающей последовательности - работает
+        {          
+            try
+            {
+                lbMain.Items.Clear();
+                myAL = new ArrayList();
+                int itemCount = Convert.ToInt32(tBox_countElem.Text);
+                Gen_new(myAL, itemCount, A, B);
+                tBox_countElem.BorderBrush = Brushes.Gray;
+            }
+            catch
+            {
+                error();
+            }
+        }
+
         void math()
         {
             int sum = 0, index;
@@ -360,21 +392,17 @@ namespace TP_Laba1
             }
             mo = sum / myAL.Count;
         }
-        void mean()
+        void max()
         {
-            int sum = 0, index;
-            for (index = 0; index < myAL.Count; index++)
+            double max = Math.Abs((int)myAL[0] - mo);
+            for (int index = 1; index < myAL.Count; index++)
             {
-                sum += (int)myAL[index];
+                double n = Math.Abs((int)myAL[index] - mo);
+                if (n > max) max = n;
             }
-            sum = sum / myAL.Count;
-            for (index = 0; index < myAL.Count; index++)
-            {
-                sr += Math.Pow((int)myAL[index]-sum,2);
-            }
-            sr = Math.Sqrt(sr / myAL.Count);
+            sr = max;
         }
-        
-        }
+
+    }
     }
 
