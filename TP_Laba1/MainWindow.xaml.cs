@@ -406,22 +406,31 @@ namespace TP_Laba1
                 int k,n;
                 k = Convert.ToInt32(window3.textBox1.Text);
                 while (k!=0) {
+                    //MessageBox.Show(Convert.ToString(lbMain.Items.Count));
                     Window4 window4 = new Window4();
                     window4.ShowDialog();
                     n = Convert.ToInt32(window4.textBox1.Text);
                     lbMain.Items.Add("величина границы отклонения = " + n);
-                    for (int index = 0; index < myAL.Count; index++)
+                    for (int index = 0; index <myAL.Count; index++)
                     {
-                        int p = Math.Abs((int)myAL[index] - (int)mo);
+                        int p = Math.Abs((int)myAL[index]) - Math.Abs((int)mo);
                         if ( p> n)
                         {
-                            lbMain.Items.RemoveAt(index + 1);
-                            for (int j = index; j < myAL.Count; j++)
-                                myAL[j] = myAL[j++];
-                        }
+                            try
+                            {
+                                int c = index + 1;
+                                lbMain.Items.RemoveAt(c);                                
+                                myAL.RemoveAt(index);
+                                index--;
+                            }
+                            catch { index++; }
+                        }        
                     }
                     k--;
                 }
+                lbMain.Items.Add("Измененный массив");
+                for (int i = 0; i < myAL.Count; i++)
+                    lbMain.Items.Add(myAL[i]);
             }
             else MessageBox.Show("Массив не сформирован");
         }
