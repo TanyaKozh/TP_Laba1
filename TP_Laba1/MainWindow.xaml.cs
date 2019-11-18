@@ -371,7 +371,7 @@ namespace TP_Laba1
                 }
             }
             else MessageBox.Show("Массив не сформирован");
-        }
+        }                     //задание * не работает
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
             {
