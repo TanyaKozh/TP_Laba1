@@ -21,15 +21,11 @@ namespace TP_Laba1
         }
 
         // Сделайте некоторые случайные данные.
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void Chart1_Paint(object sender, PaintEventArgs e)
         {
             int i;
-
             for (i = 0; i < myAL.Count; i++)
             {
 
