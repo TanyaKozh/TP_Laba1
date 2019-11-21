@@ -32,7 +32,7 @@ namespace TP_Laba1
         {
             Close();
         }
-        int A = -10, B = 10,mo;
+        int A = -100, B = 100,mo;
         double sr;
         private void Gen(ArrayList myAL, int itemCount, int x, int y)
         {
