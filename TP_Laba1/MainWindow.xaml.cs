@@ -311,69 +311,6 @@ namespace TP_Laba1
             else MessageBox.Show("Массив не сформирован");
         }
 
-        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
-        {
-            if (myAL != null)
-            { 
-            Window2 w2 = new Window2();
-                w2.ShowDialog();
-                int m = 0;
-                int K;
-                K = Convert.ToInt32(w2.tb_K.Text);
-                if (K > myAL.Count)
-                    MessageBox.Show("K не может быть больше,чем количество элементов массива");
-                else
-                {
-                    for (int i = 0; i < K+1; i++)
-                    {
-                        myAL.Add(myAL[i]);
-                        lbMain.Items.Add(myAL[i]);
-                    }
-
-                    for (int i = 0; i < myAL.Count; i++)
-                    {
-                        try
-                        {
-                            int index = i, n = K * 2+1, n1 = n, l=i+K+1;
-
-                            while (index !=l)
-                            {
-                                if ((int)myAL[index] < (int)myAL[index+1]) n--;
-                                index++;
-                            }
-                            if (n == 0) m++;
-                            index = i;
-
-                            //while (index != i + K)
-                            //{
-                            //    if ((int)myAL[index - 1] > (int)myAL[index]) n1--;
-                            //    index++;
-                            //}
-                            //if (n1 == 0) m++;
-                        }
-                        catch
-                        {
-                            
-                        }
-
-                        //for (int index = i; index < i+K; index++)
-                        //{
-                        //    if((int)myAL[index-1]< (int)myAL[index])
-                        //}
-                        //    for (int index = i; index < K; index++)
-                        //{
-                        //    if (((int)myAL[index - 2] > (int)myAL[index - 1]) && ((int)myAL[index - 1] > (int)myAL[index]) && ((int)myAL[index] > (int)myAL[index + 1]) && ((int)myAL[index + 1] > (int)myAL[index + 2]))
-                        //        m++;
-                        //}
-
-                    }
-                    tBox_countElem.BorderBrush = Brushes.Gray;
-                    MessageBox.Show("Колличество элементов массива составляющих упорядоченную последовательность с «соседями» = " + m);
-                }
-            }
-            else MessageBox.Show("Массив не сформирован");
-        }                     //задание * не работает
-
         private void MenuItem_Click_4(object sender, RoutedEventArgs e)
         {
             

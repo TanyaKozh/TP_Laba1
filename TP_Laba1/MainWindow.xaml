@@ -44,7 +44,6 @@
                 <MenuItem Header="Соседи" Click="MenuItem_Click"/>
                 <MenuItem Header="Последовательность" Click="MenuItem_Click_2"/>
                 <MenuItem Header="Последовательность 2" Click="MenuItem_Click_1"/>
-                <MenuItem Header="Последовательность 2*" Click="MenuItem_Click_3"/>
             </MenuItem>
             <MenuItem Header="Автор 1" Width="105">
                 <MenuItem Header="Генерация" Click="MenuItem_Click_4"/>
