@@ -18,6 +18,7 @@ using Microsoft.Win32;
 
 namespace TP_Laba1
 {
+   
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
@@ -372,6 +373,11 @@ namespace TP_Laba1
             }
             else MessageBox.Show("Массив не сформирован");
         }                     //задание * не работает
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            
+        }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
             {
